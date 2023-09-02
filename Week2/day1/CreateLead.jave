@@ -1,0 +1,77 @@
+	package week2.Day1;
+	
+	import org.openqa.selenium.By;
+	import org.openqa.selenium.WebElement;
+	import org.openqa.selenium.chrome.ChromeDriver;
+	import org.openqa.selenium.support.ui.Select;
+	
+	public class CreateLead {
+	
+		public static void main(String[] args) {
+			// Open leaftaps browser
+			ChromeDriver driver= new ChromeDriver();
+			driver.get("http://leaftaps.com/opentaps/control/login");
+			driver.manage().window().maximize();
+			
+			//Login leaftaps
+			  /*2. Enter UserName and Password Using Id Locator
+			   3. Click on Login Button using Class Locator*/
+			
+	         WebElement eleUsername = driver.findElement(By.id("username"));
+	         eleUsername.sendKeys("demoSalesManager");
+	
+	
+	
+	        WebElement elePassword = driver.findElement(By.id("password"));
+	        elePassword.sendKeys("crmsfa");
+	        
+	        WebElement login = driver.findElement(By.className("decorativeSubmit"));
+	        login.click();
+	        
+	        /*  4. Click on CRM/SFA Link
+			  5. Click on Leads Button*/
+	        
+	        WebElement crm = driver.findElement(By.partialLinkText("CRM"));
+	        crm.click();
+	        
+	        WebElement leads = driver.findElement(By.partialLinkText("Leads"));
+	        leads.click();
+	        
+	        WebElement createLead = driver.findElement(By.linkText("Create Lead"));
+	        createLead.click();
+	        
+	        driver.findElement(By.id("createLeadForm_companyName")).sendKeys("Companyname");
+	        driver.findElement(By.id("createLeadForm_description")).sendKeys("desc");
+	        driver.findElement(By.id("createLeadForm_departmentName")).sendKeys("depart");
+	        driver.findElement(By.id("createLeadForm_firstName")).sendKeys("FirstNamelocal");	
+	        driver.findElement(By.id("createLeadForm_lastName")).sendKeys("LastNamelocal");	
+	        driver.findElement(By.id("createLeadForm_firstNameLocal")).sendKeys("FirstNamelocal");	
+	        driver.findElement(By.id("createLeadForm_lastNameLocal")).sendKeys("LastNamelocal");	
+	        driver.findElement(By.id("createLeadForm_primaryEmail")).sendKeys("test@123.com");
+	        
+	        
+	        /*
+	         *  14. Select State/Province as NewYork Using Visible Text
+			  15. Click on Create Button
+	                  16. Get the Title of Resulting Page. refer the video  using driver.getTitle()
+	         */
+		    //driver.close();
+	        
+	        WebElement state = driver.findElement(By.id("createLeadForm_generalStateProvinceGeoId"));
+	        Select select1 = new Select(state);
+	        select1.selectByVisibleText("New York");
+	        
+	       /* WebElement country = driver.findElement(By.id("createLeadForm_generalCountryGeoId"));
+	        Select visible = new Select(country);
+	        visible.selectByVisibleText("United States");*/
+	        
+	        
+	        WebElement createLeadsubmit = driver.findElement(By.name("submitButton"));
+	        createLeadsubmit.click();
+	        
+	        String title = driver.getTitle();
+	        System.out.println(title);
+	        
+		}
+	
+	}
