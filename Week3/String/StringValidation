@@ -1,0 +1,31 @@
+package week3.JavaChallenge;
+
+/*Example 1:
+
+Input: s = "Hello World"
+Output: 5
+Explanation: The last word is "World" with length 5.*/
+
+public class StringValidation {
+
+	public static void main(String[] args) {
+     
+	 /*String s = "Hello World";	
+     String lastNchars = s.substring( Math.max(0, s.length()-5));
+     System.out.println(lastNchars);
+     int a = lastNchars.length();
+     System.out.println(a);*/
+		
+		String s = "Hello World";
+		String lastNchars = s.substring(6,11);
+		System.out.println(lastNchars);
+		
+     
+     
+   
+   
+	}
+
+}
+
+
